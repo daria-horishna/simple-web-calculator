@@ -1,5 +1,7 @@
 // calculator.js
 
+const errorForReport = "Ця змінна зламає лінтер";
+
 export function add(a, b) {
     return a + b;
 }
