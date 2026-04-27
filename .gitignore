@@ -5,3 +5,9 @@
 # Системні файли
 .DS_Store
 Thumbs.db
+
+coverage/
+test-results/
+node_modules/
+dist/
+.env

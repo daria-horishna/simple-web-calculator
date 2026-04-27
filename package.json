@@ -1,0 +1,38 @@
+{
+  "name": "simple-web-calculator",
+  "version": "1.0.0",
+  "description": "\\# Simple Web Calculator",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --fix",
+    "test:unit": "vitest --exclude tests",
+    "test:unit:coverage": "vitest run --coverage --exclude tests",
+    "test:e2e": "playwright test tests",
+    "test": "npm run test:unit && npm run test:e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daria-horishna/simple-web-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daria-horishna/simple-web-calculator/issues"
+  },
+  "homepage": "https://github.com/daria-horishna/simple-web-calculator#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.59.1",
+    "@vitest/coverage-v8": "^4.1.5",
+    "@vitest/ui": "^4.1.5",
+    "eslint": "^10.2.1",
+    "jsdom": "^29.1.0",
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
+  }
+}

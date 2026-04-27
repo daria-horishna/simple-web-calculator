@@ -2,17 +2,65 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Web Calculator</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Мій Супер-пупер Калькулятор</h1>
-    <input type="number" id="num1" placeholder="Число 1">
+
+<div class="status-bar">
+    Статус системи: <span id="app-status">Завантаження...</span>
+</div>
+
+<div class="calculator-card">
+    <h1>Калькулятор</h1>
+
+    <input type="number" id="num1" placeholder="Перше число">
+
     <select id="operator">
-        <option value="+">+</option>
-        <option value="-">-</option>
+        <option value="+">Додавання (+)</option>
+        <option value="-">Віднімання (-)</option>
+        <option value="*">Множення (*)</option>
+        <option value="/">Ділення (/)</option>
+        <option value="^">Степінь (^)</option>
     </select>
-    <input type="number" id="num2" placeholder="Число 2">
-    <button id="calc-btn" onclick="calculate()">Рахувати</button>
-    <p>Результат: <span id="result">0</span></p>
+
+    <input type="number" id="num2" placeholder="Друге число">
+
+    <button id="calc-btn" onclick="calculate()">Порахувати</button>
+
+    <div class="result-box">
+        Результат: <span id="result">0</span>
+    </div>
+</div>
+
+<script type="module">
+    // Імпортуємо всі функції з нашої бізнес-логіки
+    import { add, subtract, multiply, divide, power } from './js/calculator.js';
+
+    // Виводимо статус оточення
+    document.getElementById('app-status').innerText = import.meta.env.VITE_APP_STATUS;
+
+    window.calculate = () => {
+        const n1 = Number(document.getElementById('num1').value);
+        const n2 = Number(document.getElementById('num2').value);
+        const op = document.getElementById('operator').value;
+        let res = 0;
+
+        try {
+            switch(op) {
+                case '+': res = add(n1, n2); break;
+                case '-': res = subtract(n1, n2); break;
+                case '*': res = multiply(n1, n2); break;
+                case '/': res = divide(n1, n2); break;
+                case '^': res = power(n1, n2); break;
+            }
+            document.getElementById('result').innerText = res;
+        } catch (error) {
+            document.getElementById('result').innerText = "Помилка";
+            alert(error.message);
+        }
+    };
+</script>
 </body>
 </html>
