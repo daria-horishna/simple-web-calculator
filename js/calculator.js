@@ -1,5 +1,7 @@
 // calculator.js
 
+// Трігер для оновлення статусу бейджа
+
 export function add(a, b) {
     return a + b;
 }
