@@ -1,4 +1,4 @@
-\#[![CI/CD Pipeline](https://github.com/daria-horishna/simple-web-calculator/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/daria-horishna/simple-web-calculator/actions/workflows/ci-cd.yml)
+![Status](https://github.com/daria-horishna/simple-web-calculator/actions/workflows/ci-cd.yml/badge.svg)
 
 \# Simple Web Calculator
 
