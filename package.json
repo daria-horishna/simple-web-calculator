@@ -34,5 +34,8 @@
     "jsdom": "^29.1.0",
     "vite": "^8.0.10",
     "vitest": "^4.1.5"
+  },
+  "dependencies": {
+    "posthog-js": "^1.372.10"
   }
 }
