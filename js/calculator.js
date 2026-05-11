@@ -9,28 +9,24 @@ posthog.init('phc_oURsraicSCGu9DpAzXm2PbWdVkAP8h2ZMWKzk3PgBkLp', {
 
 export function add(a, b) {
     const result = a + b;
-    // КРОК 2: Відстежуємо подію додавання
     posthog.capture('calculation_performed', { operation: 'add', result: result });
     return result;
 }
 
 export function subtract(a, b) {
     const result = a - b;
-    // КРОК 2: Відстежуємо подію віднімання
     posthog.capture('calculation_performed', { operation: 'subtract', result: result });
     return result;
 }
 
 export function multiply(a, b) {
     const result = a * b;
-    // КРОК 2: Відстежуємо подію множення
     posthog.capture('calculation_performed', { operation: 'multiply', result: result });
     return result;
 }
 
 export function divide(a, b) {
     if (b === 0) {
-        // Відстежуємо помилку як негативний сценарій
         posthog.capture('calculation_error', { type: 'division_by_zero' });
         throw new Error("Ділення на нуль неможливе");
     }
@@ -50,3 +46,16 @@ export function calculateAndLog(a, b, logger) {
     logger(`Успішно пораховано: ${result}`);
     return result;
 }
+
+// Крок 5: Перевірка Feature Flag
+posthog.onFeatureFlags(() => {
+    // Якщо прапорець 'show-info-message' увімкнений в PostHog
+    if (posthog.isFeatureEnabled('show-info-message')) {
+        // Створюємо елемент повідомлення на сторінці
+        const info = document.createElement('p');
+        info.innerText = "✨ Тепер ви можете використовувати розширені функції!";
+        info.style.color = "green";
+        info.id = "feature-flag-msg";
+        document.body.appendChild(info);
+    }
+});
