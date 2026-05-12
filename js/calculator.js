@@ -4,7 +4,7 @@ import posthog from 'posthog-js';
 // Ініціалізація PostHog
 posthog.init('phc_oURsraicSCGu9DpAzXm2PbWdVkAP8h2ZMWKzk3PgBkLp', {
     api_host: '/ingest',
-    ui_host: 'https://eu.posthog.com',
+    ui_host: 'https://us.posthog.com',
     person_profiles: 'identified_only'
 });
 
