@@ -28,6 +28,7 @@
     <input type="number" id="num2" placeholder="Друге число">
 
     <button id="calc-btn" onclick="calculate()">Порахувати</button>
+    <button id="break-btn" style="background-color: red; color: white;">Break the World</button>
 
     <div class="result-box">
         Результат: <span id="result">0</span>
@@ -48,12 +49,22 @@
         let res = 0;
 
         try {
-            switch(op) {
-                case '+': res = add(n1, n2); break;
-                case '-': res = subtract(n1, n2); break;
-                case '*': res = multiply(n1, n2); break;
-                case '/': res = divide(n1, n2); break;
-                case '^': res = power(n1, n2); break;
+            switch (op) {
+                case '+':
+                    res = add(n1, n2);
+                    break;
+                case '-':
+                    res = subtract(n1, n2);
+                    break;
+                case '*':
+                    res = multiply(n1, n2);
+                    break;
+                case '/':
+                    res = divide(n1, n2);
+                    break;
+                case '^':
+                    res = power(n1, n2);
+                    break;
             }
             document.getElementById('result').innerText = res;
         } catch (error) {

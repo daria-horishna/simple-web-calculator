@@ -3,8 +3,31 @@ import posthog from 'posthog-js';
 
 // Ініціалізація PostHog
 posthog.init('phc_oURsraicSCGu9DpAzXm2PbWdVkAP8h2ZMWKzk3PgBkLp', {
-    api_host: 'https://us.i.posthog.com',
+    api_host: '/ingest',
     person_profiles: 'identified_only'
+});
+
+import * as Sentry from "@sentry/browser";
+
+Sentry.init({
+    dsn: "https://843ed3bf1ce9b510f14e28fa30bc1bdc@o4511371463491584.ingest.de.sentry.io/4511371490951248",
+    integrations: [
+        Sentry.browserTracingIntegration(),
+        Sentry.replayIntegration(),
+    ],
+    // Tracing
+    tracesSampleRate: 1.0,
+    // Replay
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1.0,
+    environment: "development",
+});
+
+// Налаштування контексту користувача
+Sentry.setUser({
+    id: "student-pp-32",
+    email: "daria.horishna@example.com",
+    segment: "premium_user"
 });
 
 export function add(a, b) {
@@ -58,4 +81,8 @@ posthog.onFeatureFlags(() => {
         info.id = "feature-flag-msg";
         document.body.appendChild(info);
     }
+});
+
+document.getElementById('break-btn').addEventListener('click', () => {
+    throw new TypeError("Sentry Test: Absolutely NEW error type!");
 });
